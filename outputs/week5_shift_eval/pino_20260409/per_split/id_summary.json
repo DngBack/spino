@@ -1,0 +1,15 @@
+{
+  "family": "id",
+  "num_cases": 8,
+  "model_rollout_seconds": 0.10304367250046198,
+  "one_step_mae": 0.002793426494463347,
+  "one_step_relative_rmse": 0.17440691478148632,
+  "one_step_rmse": 0.011631855421001092,
+  "rollout_mae": 0.029971925308927894,
+  "rollout_relative_rmse": 1.2813653468530912,
+  "rollout_rmse": 0.08106127078644931,
+  "rollout_steps": 79.0,
+  "solver_seconds": 0.007165068249832984,
+  "model_steps_per_second": 766.6652214831125,
+  "solver_steps_per_second": 11025.714933258516
+}

@@ -1,7 +1,7 @@
 {
   "split_name": "split_v0.2_id",
   "dataset_version": "v0.2",
-  "created_at": "2026-04-09T13:11:18+00:00",
+  "created_at": "2026-04-09T13:46:21+00:00",
   "train_case_ids": [
     "spino_centrifugal_wave_geo01_p01_s20271411_r64_t80",
     "spino_centrifugal_wave_geo01_p02_s20281409_r64_t80",

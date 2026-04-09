@@ -1,0 +1,18 @@
+{
+  "family": "long_rollout",
+  "num_cases": 8,
+  "long_rollout_rmse": 0.082204231293872,
+  "long_vs_short_ratio": 1.2209028892765983,
+  "model_rollout_seconds": 0.10328498462490643,
+  "one_step_mae": 0.00312156266591046,
+  "one_step_relative_rmse": 0.18528370606148659,
+  "one_step_rmse": 0.011873182957060635,
+  "rollout_mae": 0.031494800467044115,
+  "rollout_relative_rmse": 1.418327832795959,
+  "rollout_rmse": 0.082204231293872,
+  "rollout_steps": 79.0,
+  "short_rollout_rmse": 0.08366296614985913,
+  "solver_seconds": 0.007090401250252398,
+  "model_steps_per_second": 764.8740064869963,
+  "solver_steps_per_second": 11141.823602322622
+}

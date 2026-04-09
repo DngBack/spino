@@ -1,0 +1,15 @@
+{
+  "family": "parameter_shift",
+  "num_cases": 6,
+  "model_rollout_seconds": 0.10129656166676189,
+  "one_step_mae": 0.0014575524837709963,
+  "one_step_relative_rmse": 0.22443368500533933,
+  "one_step_rmse": 0.0019697011642468474,
+  "rollout_mae": 0.013204162319501242,
+  "rollout_relative_rmse": 1.924495483581769,
+  "rollout_rmse": 0.016787926976879437,
+  "rollout_steps": 79.0,
+  "solver_seconds": 0.007170912000219687,
+  "model_steps_per_second": 779.8882676777173,
+  "solver_steps_per_second": 11016.729810319772
+}

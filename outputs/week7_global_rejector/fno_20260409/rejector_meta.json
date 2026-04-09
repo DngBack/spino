@@ -1,0 +1,40 @@
+{
+  "feature_cols": [
+    "feature_one_step_rmse",
+    "feature_pred_var",
+    "feature_temporal_grad_mean",
+    "feature_drift_score",
+    "feature_temporal_std",
+    "feature_residual_mean",
+    "feature_residual_max",
+    "feature_ood_param_z",
+    "feature_geo_ood"
+  ],
+  "normalization_mean": [
+    0.08501584082841873,
+    0.00015849911142140627,
+    0.0003899266885127872,
+    0.07504840940237045,
+    0.025858622044324875,
+    0.008340025320649147,
+    0.040667809545993805,
+    1.8842086791992188,
+    0.0
+  ],
+  "normalization_std": [
+    0.05464082211256027,
+    1.381805873279518e-06,
+    1.1148692919960013e-06,
+    0.05407184362411499,
+    0.01802791655063629,
+    0.0012174582807347178,
+    0.009234808385372162,
+    0.6705374717712402,
+    9.99999993922529e-09
+  ],
+  "target_coverage": 0.8,
+  "backbone_type": "fno",
+  "backbone_checkpoint": "outputs/week3_fno/20260409_202231/best_fno.pt",
+  "final_val_mse": 23214000439296.0,
+  "final_val_corr": 0.6009572666357575
+}

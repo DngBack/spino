@@ -1,0 +1,38 @@
+{
+  "threshold_calibrated_on_id_target80": 889323.875,
+  "summary_rows": [
+    {
+      "family": "id",
+      "threshold": 889323.875,
+      "coverage": 0.875,
+      "accepted_risk": 0.09097440540790558,
+      "overall_risk": 0.08220423758029938,
+      "risk_reduction_pct": -10.668753930159937,
+      "best_curve_coverage": 0.125,
+      "best_curve_accepted_risk": 0.03307243436574936,
+      "best_curve_reduction_pct": 59.7679689767291
+    },
+    {
+      "family": "parameter_shift",
+      "threshold": 889323.875,
+      "coverage": 1.0,
+      "accepted_risk": 0.02083406411111355,
+      "overall_risk": 0.02083406411111355,
+      "risk_reduction_pct": 0.0,
+      "best_curve_coverage": 0.2,
+      "best_curve_accepted_risk": 0.020804690197110176,
+      "best_curve_reduction_pct": 0.1409898416684972
+    },
+    {
+      "family": "geometry_shift",
+      "threshold": 889323.875,
+      "coverage": 0.9411764705882353,
+      "accepted_risk": 0.09023837000131607,
+      "overall_risk": 0.09174472093582153,
+      "risk_reduction_pct": 1.641893854098924,
+      "best_curve_coverage": 0.23529411764705882,
+      "best_curve_accepted_risk": 0.027157584205269814,
+      "best_curve_reduction_pct": 70.3987500008121
+    }
+  ]
+}
