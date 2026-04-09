@@ -1,0 +1,23 @@
+# Core numerical stack
+numpy
+scipy
+pandas
+
+# Deep learning
+torch
+torchvision
+
+# Config and CLI
+PyYAML
+tqdm
+
+# Scientific utilities and metrics
+scikit-learn
+matplotlib
+seaborn
+
+# Data and file formats
+h5py
+
+# Optional but useful for experiment management
+tensorboard

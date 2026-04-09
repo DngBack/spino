@@ -1,0 +1,43 @@
+{
+  "dataset_name": "spino_ep2d",
+  "dataset_version": "v0.1",
+  "created_at": "2026-04-09T10:00:00Z",
+  "description": "SPINO 2D cardiac electrophysiology benchmark dataset",
+  "scenarios": [
+    "planar_wave",
+    "centrifugal_wave",
+    "stable_spiral",
+    "spiral_breakup"
+  ],
+  "resolutions": ["r64", "r128"],
+  "num_total_cases": 0,
+  "num_total_trajectories": 0,
+  "num_total_steps": 0,
+  "channels": {
+    "input": ["V0", "R0"],
+    "output": ["V", "R"]
+  },
+  "cases": [
+    {
+      "case_id": "spino_stable_spiral_geo07_p03_s1024_r128_t300",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo07_p03_s1024_r128_t300.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo07_p03_s1024_r128_t300.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo07",
+      "parameter_set_id": "p03",
+      "seed": 1024,
+      "split_tags": ["train_id"]
+    }
+  ],
+  "split_files": {
+    "id": "data/splits/split_v1_id.json",
+    "parameter_shift": "data/splits/split_v1_param_shift.json",
+    "geometry_shift": "data/splits/split_v1_geometry_shift.json",
+    "long_rollout": "data/splits/split_v1_long_rollout.json"
+  },
+  "generation_config_path": "data/metadata/generation_config.v1.json",
+  "notes": [
+    "Update counts after population",
+    "All listed paths should be relative to repository root"
+  ]
+}

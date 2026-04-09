@@ -1,0 +1,58 @@
+{
+  "dataset_name": "spino_ep2d",
+  "dataset_version": "v0.1",
+  "generator": "synthetic",
+  "global_seed": 20260409,
+  "scenarios": [
+    {
+      "name": "planar_wave",
+      "enabled": true,
+      "num_parameter_sets": 8,
+      "num_seeds_per_parameter_set": 20
+    },
+    {
+      "name": "centrifugal_wave",
+      "enabled": true,
+      "num_parameter_sets": 8,
+      "num_seeds_per_parameter_set": 20
+    },
+    {
+      "name": "stable_spiral",
+      "enabled": true,
+      "num_parameter_sets": 10,
+      "num_seeds_per_parameter_set": 30
+    },
+    {
+      "name": "spiral_breakup",
+      "enabled": true,
+      "num_parameter_sets": 10,
+      "num_seeds_per_parameter_set": 30
+    }
+  ],
+  "resolutions": [
+    { "tag": "r64", "shape": [64, 64], "dx": 0.5 },
+    { "tag": "r128", "shape": [128, 128], "dx": 0.25 }
+  ],
+  "time": {
+    "dt": 0.1,
+    "num_steps": 300
+  },
+  "parameter_ranges": {
+    "diffusion": [0.0008, 0.0014],
+    "conductivity": [0.8, 1.2],
+    "excitability": [0.10, 0.24],
+    "restitution": [0.10, 0.35]
+  },
+  "stimulus_defaults": {
+    "type": "point",
+    "start_step": 5,
+    "duration_steps": 10,
+    "amplitude": 1.0
+  },
+  "output": {
+    "raw_root": "data/raw/synthetic_runs",
+    "processed_root": "data/processed/tensors",
+    "metadata_root": "data/metadata/case_metadata",
+    "manifest_path": "data/metadata/dataset_manifest.v0.1.json"
+  }
+}

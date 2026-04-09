@@ -1,0 +1,21 @@
+{
+  "dataset_name": "spino_ep2d",
+  "dataset_version": "v0.1",
+  "num_manifest_cases": 1,
+  "num_loaded_cases": 1,
+  "num_missing_metadata": 1,
+  "scenario_counts": {
+    "stable_spiral": 1
+  },
+  "resolution_counts": {
+    "null": 1
+  },
+  "num_unique_geometries": 1,
+  "num_unique_seeds": 1,
+  "num_steps_stats": {
+    "min": NaN,
+    "max": NaN,
+    "mean": NaN
+  },
+  "quality_flag_counts": {}
+}

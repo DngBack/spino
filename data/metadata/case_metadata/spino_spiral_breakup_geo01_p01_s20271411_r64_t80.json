@@ -1,0 +1,63 @@
+{
+  "case_id": "spino_spiral_breakup_geo01_p01_s20271411_r64_t80",
+  "dataset_version": "v0.2",
+  "generator": "synthetic",
+  "scenario_type": "spiral_breakup",
+  "geometry_id": "geo01",
+  "parameter_set_id": "p01",
+  "mesh_or_grid": {
+    "type": "grid",
+    "shape": [
+      64,
+      64
+    ],
+    "resolution_tag": "r64",
+    "dx": 0.015625
+  },
+  "time": {
+    "dt": 0.1,
+    "num_steps": 80,
+    "t_start": 0.0
+  },
+  "seed": 20271411,
+  "parameters": {
+    "diffusion": 0.0012835805431738404,
+    "conductivity": 1.0952447925892843,
+    "excitability": 0.1026909407325903,
+    "restitution": 0.1962795004032381
+  },
+  "stimulus": {
+    "type": "scenario_defined",
+    "location": null,
+    "start_step": 5,
+    "duration_steps": 10,
+    "amplitude": 0.8826432547123337
+  },
+  "state_channels": {
+    "input_channels": [
+      "V0",
+      "R0"
+    ],
+    "output_channels": [
+      "V",
+      "R"
+    ]
+  },
+  "file_paths": {
+    "raw_case_path": "data/raw/synthetic_runs/spiral_breakup/geo01/p01/s20271411",
+    "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p01_s20271411_r64_t80.npz"
+  },
+  "split_tags": [
+    "unassigned"
+  ],
+  "quality_flags": {
+    "has_nan": false,
+    "has_inf": false,
+    "is_duplicate_hash": false,
+    "physics_warning": false
+  },
+  "hashes": {
+    "processed_tensor_sha256": "788013f7aae7312a92ccfe47ab493fa1372e85f335c26e480ce33f49b7998be2"
+  },
+  "created_at": "2026-04-09T13:11:10+00:00"
+}

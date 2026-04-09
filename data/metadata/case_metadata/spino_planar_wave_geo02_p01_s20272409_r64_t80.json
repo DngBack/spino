@@ -1,0 +1,63 @@
+{
+  "case_id": "spino_planar_wave_geo02_p01_s20272409_r64_t80",
+  "dataset_version": "v0.2",
+  "generator": "synthetic",
+  "scenario_type": "planar_wave",
+  "geometry_id": "geo02",
+  "parameter_set_id": "p01",
+  "mesh_or_grid": {
+    "type": "grid",
+    "shape": [
+      64,
+      64
+    ],
+    "resolution_tag": "r64",
+    "dx": 0.015625
+  },
+  "time": {
+    "dt": 0.1,
+    "num_steps": 80,
+    "t_start": 0.0
+  },
+  "seed": 20272409,
+  "parameters": {
+    "diffusion": 0.0012551952558929025,
+    "conductivity": 0.8864540017503466,
+    "excitability": 0.17490463328610922,
+    "restitution": 0.33787950917104786
+  },
+  "stimulus": {
+    "type": "scenario_defined",
+    "location": null,
+    "start_step": 5,
+    "duration_steps": 10,
+    "amplitude": 1.067645753786206
+  },
+  "state_channels": {
+    "input_channels": [
+      "V0",
+      "R0"
+    ],
+    "output_channels": [
+      "V",
+      "R"
+    ]
+  },
+  "file_paths": {
+    "raw_case_path": "data/raw/synthetic_runs/planar_wave/geo02/p01/s20272409",
+    "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p01_s20272409_r64_t80.npz"
+  },
+  "split_tags": [
+    "unassigned"
+  ],
+  "quality_flags": {
+    "has_nan": false,
+    "has_inf": false,
+    "is_duplicate_hash": false,
+    "physics_warning": false
+  },
+  "hashes": {
+    "processed_tensor_sha256": "2ef3bebe84ddd967b3b46e01492cdcd7924b4ccc840e1073294ad431860ba085"
+  },
+  "created_at": "2026-04-09T13:11:07+00:00"
+}

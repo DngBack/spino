@@ -1,0 +1,2 @@
+case_id,metadata_path,metadata_exists,scenario_type,geometry_id,seed,resolution_tag,num_steps,dt,split_tags
+spino_stable_spiral_geo07_p03_s1024_r128_t300,/home/admin1/Desktop/spino/data/metadata/case_metadata/spino_stable_spiral_geo07_p03_s1024_r128_t300.json,False,stable_spiral,geo07,1024,,,,train_id

@@ -1,0 +1,617 @@
+{
+  "dataset_name": "spino_ep2d",
+  "dataset_version": "v0.2",
+  "created_at": "2026-04-09T13:11:18+00:00",
+  "description": "SPINO 2D cardiac electrophysiology benchmark dataset",
+  "scenarios": [
+    "centrifugal_wave",
+    "planar_wave",
+    "spiral_breakup",
+    "stable_spiral"
+  ],
+  "resolutions": [
+    "r64"
+  ],
+  "num_total_cases": 48,
+  "num_total_trajectories": 48,
+  "num_total_steps": 3840,
+  "channels": {
+    "input": [
+      "V0",
+      "R0"
+    ],
+    "output": [
+      "V",
+      "R"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p01_s20271409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p01_s20271409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p01_s20271409_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p01_s20271410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p01_s20271410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p01_s20271410_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p01_s20271411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p01_s20271411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p01_s20271411_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p02_s20281409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p02_s20281409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p02_s20281409_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p02_s20281410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p02_s20281410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p02_s20281410_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo01_p02_s20281411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo01_p02_s20281411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo01_p02_s20281411_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p01_s20272409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p01_s20272409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p01_s20272409_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p01_s20272410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p01_s20272410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p01_s20272410_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p01_s20272411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p01_s20272411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p01_s20272411_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p02_s20282409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p02_s20282409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p02_s20282409_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p02_s20282410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p02_s20282410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p02_s20282410_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_centrifugal_wave_geo02_p02_s20282411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_centrifugal_wave_geo02_p02_s20282411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p02_s20282411_r64_t80.npz",
+      "scenario_type": "centrifugal_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p01_s20271409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p01_s20271409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p01_s20271409_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p01_s20271410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p01_s20271410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p01_s20271410_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p01_s20271411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p01_s20271411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p01_s20271411_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p02_s20281409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p02_s20281409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p02_s20281409_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p02_s20281410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p02_s20281410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p02_s20281410_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo01_p02_s20281411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo01_p02_s20281411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo01_p02_s20281411_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p01_s20272409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p01_s20272409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p01_s20272409_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p01_s20272410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p01_s20272410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p01_s20272410_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p01_s20272411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p01_s20272411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p01_s20272411_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p02_s20282409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p02_s20282409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p02_s20282409_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p02_s20282410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p02_s20282410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p02_s20282410_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_planar_wave_geo02_p02_s20282411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_planar_wave_geo02_p02_s20282411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_planar_wave_geo02_p02_s20282411_r64_t80.npz",
+      "scenario_type": "planar_wave",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p01_s20271409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p01_s20271409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p01_s20271409_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p01_s20271410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p01_s20271410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p01_s20271410_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p01_s20271411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p01_s20271411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p01_s20271411_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p02_s20281409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p02_s20281409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p02_s20281409_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p02_s20281410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p02_s20281410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p02_s20281410_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo01_p02_s20281411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo01_p02_s20281411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo01_p02_s20281411_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p01_s20272409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p01_s20272409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p01_s20272409_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p01_s20272410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p01_s20272410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p01_s20272410_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p01_s20272411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p01_s20272411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p01_s20272411_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p02_s20282409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p02_s20282409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p02_s20282409_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p02_s20282410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p02_s20282410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p02_s20282410_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_spiral_breakup_geo02_p02_s20282411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_spiral_breakup_geo02_p02_s20282411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_spiral_breakup_geo02_p02_s20282411_r64_t80.npz",
+      "scenario_type": "spiral_breakup",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p01_s20271409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p01_s20271409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p01_s20271409_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p01_s20271410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p01_s20271410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p01_s20271410_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p01_s20271411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p01_s20271411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p01_s20271411_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p01",
+      "seed": 20271411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p02_s20281409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p02_s20281409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p02_s20281409_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p02_s20281410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p02_s20281410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p02_s20281410_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo01_p02_s20281411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo01_p02_s20281411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo01_p02_s20281411_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo01",
+      "parameter_set_id": "p02",
+      "seed": 20281411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p01_s20272409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p01_s20272409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p01_s20272409_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p01_s20272410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p01_s20272410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p01_s20272410_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p01_s20272411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p01_s20272411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p01_s20272411_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p01",
+      "seed": 20272411,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p02_s20282409_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p02_s20282409_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p02_s20282409_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282409,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p02_s20282410_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p02_s20282410_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p02_s20282410_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282410,
+      "split_tags": [
+        "unassigned"
+      ]
+    },
+    {
+      "case_id": "spino_stable_spiral_geo02_p02_s20282411_r64_t80",
+      "metadata_path": "data/metadata/case_metadata/spino_stable_spiral_geo02_p02_s20282411_r64_t80.json",
+      "processed_tensor_path": "data/processed/tensors/spino_stable_spiral_geo02_p02_s20282411_r64_t80.npz",
+      "scenario_type": "stable_spiral",
+      "geometry_id": "geo02",
+      "parameter_set_id": "p02",
+      "seed": 20282411,
+      "split_tags": [
+        "unassigned"
+      ]
+    }
+  ],
+  "split_files": {
+    "id": "data/splits/split_v0.2_id.json",
+    "parameter_shift": "data/splits/split_v0.2_param_shift.json",
+    "geometry_shift": "data/splits/split_v0.2_geometry_shift.json",
+    "long_rollout": "data/splits/split_v0.2_long_rollout.json"
+  },
+  "generation_config_path": "data/metadata/generation_config.v0.2.json",
+  "notes": [
+    "Auto-generated by scripts/build_manifest.py",
+    "All listed paths should be relative to repository root"
+  ]
+}

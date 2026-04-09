@@ -1,0 +1,14 @@
+{
+  "split_name": "split_v1_id",
+  "dataset_version": "v1.0",
+  "created_at": "2026-04-09T10:00:00Z",
+  "train_case_ids": [],
+  "val_case_ids": [],
+  "test_case_ids": [],
+  "test_shift_case_ids": [],
+  "shift_definition": "",
+  "notes": [
+    "For ID split, keep test_shift_case_ids empty",
+    "For shift split, define shift_definition clearly"
+  ]
+}

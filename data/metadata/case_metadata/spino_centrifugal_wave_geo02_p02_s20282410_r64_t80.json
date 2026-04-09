@@ -1,0 +1,63 @@
+{
+  "case_id": "spino_centrifugal_wave_geo02_p02_s20282410_r64_t80",
+  "dataset_version": "v0.2",
+  "generator": "synthetic",
+  "scenario_type": "centrifugal_wave",
+  "geometry_id": "geo02",
+  "parameter_set_id": "p02",
+  "mesh_or_grid": {
+    "type": "grid",
+    "shape": [
+      64,
+      64
+    ],
+    "resolution_tag": "r64",
+    "dx": 0.015625
+  },
+  "time": {
+    "dt": 0.1,
+    "num_steps": 80,
+    "t_start": 0.0
+  },
+  "seed": 20282410,
+  "parameters": {
+    "diffusion": 0.0009416671241517053,
+    "conductivity": 0.9733446478087431,
+    "excitability": 0.1287684731900588,
+    "restitution": 0.23893600785546648
+  },
+  "stimulus": {
+    "type": "scenario_defined",
+    "location": null,
+    "start_step": 5,
+    "duration_steps": 10,
+    "amplitude": 1.1642481712960837
+  },
+  "state_channels": {
+    "input_channels": [
+      "V0",
+      "R0"
+    ],
+    "output_channels": [
+      "V",
+      "R"
+    ]
+  },
+  "file_paths": {
+    "raw_case_path": "data/raw/synthetic_runs/centrifugal_wave/geo02/p02/s20282410",
+    "processed_tensor_path": "data/processed/tensors/spino_centrifugal_wave_geo02_p02_s20282410_r64_t80.npz"
+  },
+  "split_tags": [
+    "unassigned"
+  ],
+  "quality_flags": {
+    "has_nan": false,
+    "has_inf": false,
+    "is_duplicate_hash": false,
+    "physics_warning": false
+  },
+  "hashes": {
+    "processed_tensor_sha256": "16ece7d8e86a0d2a63658958f57f051e36f13bb120c434b13a126a64157bce84"
+  },
+  "created_at": "2026-04-09T13:11:09+00:00"
+}

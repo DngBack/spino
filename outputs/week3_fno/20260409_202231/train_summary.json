@@ -1,0 +1,11 @@
+{
+  "run_dir": "outputs/week3_fno/20260409_202231",
+  "seed": 42,
+  "device": "cuda",
+  "train_samples": 2528,
+  "val_samples": 632,
+  "test_samples": 632,
+  "best_checkpoint": "outputs/week3_fno/20260409_202231/best_fno.pt",
+  "final_val_rmse": 0.015792608489303812,
+  "final_val_mae": 0.003125653198413268
+}
