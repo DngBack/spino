@@ -1,60 +1,92 @@
-# SPINO Implementation & Experiment Plan (Full Detailed Docs)
+# SPINO Implementation Plan (Rewritten)
 
-This document converts the previous plan into a **fully structured, implementation-ready documentation**. It is designed to be directly translated into a working repo and a NeurIPS-quality experiment pipeline.
+## 1) Scope and Target Claim
 
----
+### Project scope (first paper)
+- Domain: 2D cardiac electrophysiology (EP) surrogate simulation.
+- Backbone: `FNO` and `PINO` operator models.
+- Selection: both global defer (case-level) and local defer (patch-level).
+- Fallback: trusted solver outputs (oracle repair first), then practical local refinement.
 
-# 1. Project Scope (Strict Definition)
+### Working title
+**Selective Physics-Informed Neural Operators for Reliable Cardiac Electrophysiology Simulation**
 
-## 1.1 Objective
+### Core claim to validate
+Physics-aware selective prediction (uncertainty + residual + dynamics signals) achieves a better **risk-coverage-compute** trade-off than:
+- unconditional surrogate prediction, and
+- uncertainty-only abstention.
 
-Build a system that:
+## 2) Problem Statement (Operational)
 
-- Learns a **Physics-Informed Neural Operator (PINO)** for cardiac electrophysiology
-- Learns a **rejector (global + local)**
-- Performs **selective prediction (predict or defer)**
-- Supports **hybrid simulation (surrogate + solver)**
+Given input `a` (initial condition, stimulation, geometry, parameters), predict trajectory `u_hat` and a reliability output:
+- global score `s(a)` for whole-case defer, or
+- local trust mask `M(x, t)` for regional defer.
 
-## 1.2 Core Claim
+System behavior:
+- accept reliable predictions from the fast surrogate,
+- defer unsafe regions/cases to a trusted fallback.
 
-> Physics-aware selective prediction improves the **risk–coverage–compute trade-off** compared to:
+This is a learning-to-defer setup in operator-learning form.
 
-- unconditional surrogate
-- uncertainty-only rejection
+## 3) Execution Strategy by Phase
 
----
+## Phase A - Reproducible surrogate baseline
+Build a strong, stable foundation.
 
-# 2. System Architecture (End-to-End)
+Deliverables:
+- `FNO` baseline and `PINO` baseline.
+- Point-to-point and rollout evaluation.
+- Initial ID + simple shift protocols.
 
-## 2.1 High-level pipeline
+Success criteria:
+- Reproduce expected trend: `PINO` outperforms `FNO` on long rollout / harder dynamics.
+- Surrogate is significantly faster than full solver.
 
-```
-Input a
-   ↓
-PINO Operator → prediction u_hat
-   ↓
-Feature Extractor → (uncertainty, residual, drift, OOD)
-   ↓
-Rejector
-   ↓
-Decision:
-   - Accept → keep u_hat
-   - Reject → send to fallback H
-   ↓
-Merge → final u_tilde
-```
+## Phase B - Global selective prediction
+Add defer-at-case-level first.
 
----
+Deliverables:
+- Scalar rejector head.
+- Global reliability features (uncertainty, residual, drift, OOD).
+- Coverage-controlled thresholding and global selective metrics.
 
-# 3. Repository Specification (Final Form)
+Success criteria:
+- Global selective policy beats unconditional prediction at matched compute or matched risk.
 
-```
+## Phase C - Local selective prediction (core novelty)
+Move to patchwise local defer before any pixelwise approach.
+
+Deliverables:
+- Local risk head outputting patchwise `M`.
+- Mask regularization and region-level metrics.
+- Oracle local repair for clean upper-bound analysis.
+
+Success criteria:
+- Local defer beats global defer at comparable fallback budget.
+- Rejected patches concentrate most high-error regions.
+
+## Phase D - Hybrid realistic fallback
+Convert from "abstention demo" to deployable hybrid simulator.
+
+Implement at least one:
+- patch replacement from trusted solver,
+- coarse-to-fine local refinement, or
+- slower secondary surrogate for deferred regions.
+
+Success criteria:
+- Hybrid reduces catastrophic error while preserving a strong fraction of surrogate speedup.
+
+## 4) Repository Structure
+
+Use modular separation for simulation, modeling, defer logic, and evaluation:
+
+```text
 spino/
-  configs/
-  data/
-  simulators/
+  configs/{data,model,train,eval}/
+  data/{raw,processed,splits,metadata}/
+  simulators/{opencarp,synthetic}/
   datasets/
-  models/
+  models/{backbones,heads,hybrid}/
   losses/
   features/
   trainers/
@@ -64,345 +96,266 @@ spino/
   utils/
 ```
 
----
+## 5) File-by-File Implementation Order
 
-# 4. Module-Level Design
+1. **Data + simulator plumbing**
+   - `simulators/opencarp/generate_cases.py`
+   - `simulators/opencarp/export_grids.py`
+   - `datasets/ep_operator_dataset.py`
 
-## 4.1 Dataset
+2. **Operator baseline**
+   - `models/backbones/fno.py`
+   - `models/backbones/pino_fno.py`
+   - `losses/data_loss.py`
+   - `losses/physics_loss.py`
+   - `trainers/operator_trainer.py`
 
-### Input tensor
+3. **Evaluation harness**
+   - `evaluators/predictive_metrics.py`
+   - `evaluators/event_metrics.py`
+   - `scripts/eval_id.py`
+   - `scripts/eval_shift.py`
 
-```
-[B, C_in, T_in, H, W]
-```
+4. **Reliability features**
+   - `features/residual_maps.py`
+   - `features/uncertainty_features.py`
+   - `features/rollout_drift.py`
+   - `features/ood_features.py`
 
-Where:
-- C_in = voltage + recovery + positional + parameters
+5. **Global rejector**
+   - `models/heads/global_rejector.py`
+   - `losses/selective_loss.py`
+   - `losses/coverage_loss.py`
+   - `calibration/threshold_search.py`
+   - `trainers/rejector_trainer.py`
 
-### Output tensor
+6. **Local rejector**
+   - `models/heads/local_rejector.py`
+   - `losses/mask_regularizers.py`
+   - `models/hybrid/patch_merger.py`
 
-```
-[B, C_out, T_out, H, W]
-```
+7. **Hybrid fallback**
+   - `models/hybrid/fallback_router.py`
+   - `simulators/opencarp/patch_refine.py`
+   - `models/hybrid/selective_wrapper.py`
 
----
+## 6) Data Plan
 
-## 4.2 Operator Backbone (PINO/FNO)
+### Minimal dataset for paper v1
+- 2D EP scenarios: planar, centrifugal, stable spiral, spiral breakup.
+- Parameter sweeps: conductivity/diffusion, excitability, restitution, stimulation site.
+- Structural variation: mesh resolution + simple boundary/geometry perturbation.
 
-### Architecture
+### Split families
+- ID split: held-out seeds.
+- Parameter shift split.
+- Geometry shift split.
+- Rollout shift split (train short horizon, test longer horizon).
 
-- Lift layer
-- 4 FNO blocks
-- Projection layer
+### Practical generation target
+- 4 scenarios.
+- 8-12 parameter settings per scenario.
+- 20-40 seeds per setting.
+- 200-400 time steps per trajectory.
+- 2-3 resolutions.
 
-### Output
+## 7) Model and Feature Design
 
-```
-u_hat ∈ R[B, 2, T, H, W]
-```
+### Backbone defaults
+- 4 FNO blocks.
+- Hidden width 32 or 48.
+- Inputs: voltage, recovery, positional encoding, optional parameter channels.
+- Output: next frame or short window.
 
----
+### Rejector inputs
+Global features:
+- mean/max PDE residual,
+- BC violation norm,
+- rollout drift score,
+- ensemble variance summary,
+- latent distance / parameter OOD / geometry OOD.
 
-## 4.3 Feature Extraction
+Local features (patchwise):
+- local residual map,
+- local uncertainty map,
+- local temporal inconsistency,
+- local gradient/wavefront complexity,
+- optional activation-time mismatch proxy.
 
-### Global features
+### Rejector outputs
+- Global: scalar risk score `s in R` (lower = safer).
+- Local: patch score map `S in R^(T' x H' x W')`, thresholded to `M`.
 
-- mean residual
-- max residual
-- rollout drift
-- ensemble variance
-- latent distance
-- OOD score
+## 8) Training Plan
 
-### Local features
-
-```
-[B, C_feat, T, H, W]
-```
-
-Where C_feat includes:
-- residual map
-- variance map
-- gradient map
-- drift map
-
----
-
-## 4.4 Rejector
-
-### Global Rejector
-
-MLP:
-
-```
-[B, F] → [B, 1]
-```
-
-### Local Rejector
-
-U-Net style:
-
-```
-[B, C_feat, T, H, W] → [B, 1, T', H', W']
-```
-
----
-
-## 4.5 Fallback Module
-
-Initial version:
-
-- Oracle replacement
-
-Advanced:
-
-- Patch PDE solver
-- Secondary model
-
----
-
-# 5. Training Pipeline
-
-## 5.1 Stage 1 — Operator
+## Stage 1 - Operator pretraining
+Train `FNO/PINO` without defer heads.
 
 Loss:
-
-- Data loss
-- Physics loss
-
-Output:
-
-- Stable surrogate
-
----
-
-## 5.2 Stage 2 — Target Construction
-
-### Global
-
-```
-risk = rollout RMSE
-```
-
-### Local
-
-```
-risk_map = local error
-```
-
----
-
-## 5.3 Stage 3 — Rejector Training
-
-Loss:
-
-```
-L = L_risk + λ_cov + λ_smooth
-```
-
----
-
-## 5.4 Stage 4 — Joint Fine-tuning
-
-- Unfreeze last layers
-- Optimize combined objective
-
----
-
-# 6. Calibration
-
-Modes:
-
-- Fixed coverage
-- Fixed risk
-- Fixed compute budget
-
----
-
-# 7. Dataset Plan
-
-## 7.1 Scenarios
-
-- planar
-- centrifugal
-- spiral
-- spiral breakup
-
-## 7.2 Variations
-
-- parameters
-- geometry
-- stimulation
-- resolution
-
-## 7.3 Splits
-
-- ID
-- parameter shift
-- geometry shift
-- rollout shift
-
----
-
-# 8. Metrics
-
-## 8.1 Predictive
-
-- RMSE
-- MAE
-- rollout error
-
-## 8.2 Selective
-
-- coverage
-- selective risk
-- AURC
-
-## 8.3 Local
-
-- localized coverage
-- localized risk
-- IoU / Dice
-
-## 8.4 Efficiency
-
-- latency
-- defer ratio
-
----
-
-# 9. Experiments
-
-## 9.1 Block A — Backbone
-
-Compare:
-- FNO
-- PINO
-
----
-
-## 9.2 Block B — Global Selective
-
-Compare:
-- uncertainty
-- residual
-- joint
-
----
-
-## 9.3 Block C — Local Selective
-
-Compare:
-- global vs local
-- oracle vs learned
-
----
-
-# 10. Tables (Final)
-
-## Table 1 — Backbone
-
-| Method | ID RMSE | Rollout RMSE | Shift RMSE | Latency |
-
-## Table 2 — Global Selective
-
-| Method | Coverage | Accepted RMSE | AUC |
-
-## Table 3 — Matched Risk
-
-| Method | Coverage | Latency |
-
-## Table 4 — Local
-
-| Method | Local Coverage | Accepted RMSE | IoU |
-
-## Table 5 — Hybrid
-
-| Method | RMSE | Compute | Speedup |
-
-## Table 6 — Shift
-
-| Method | Param | Geometry | Rollout |
-
-## Table 7 — Ablation
-
-| Setting | Accepted RMSE | IoU |
-
----
-
-# 11. Figures
-
-## Fig 1 — Architecture
-
-## Fig 2 — Qualitative Maps
-
-## Fig 3 — Risk-Coverage
-
-## Fig 4 — Compute-Risk
-
-## Fig 5 — Error Concentration
-
-## Fig 6 — Rollout Stability
-
-## Fig 7 — Shift
-
-## Fig 8 — Ablation Heatmap
-
----
-
-# 12. Oracle Studies
-
-- Oracle global
-- Oracle local
-- Oracle repair
-
----
-
-# 13. Timeline (12 Weeks)
-
-## Week 1–2
-Dataset + baseline
-
-## Week 3–4
-Evaluation + shifts
-
-## Week 5–6
-Global rejector
-
-## Week 7–8
-Local rejector
-
-## Week 9–10
-Hybrid routing
-
-## Week 11–12
-Finalize paper
-
----
-
-# 14. Success Criteria
-
-Paper is strong if:
-
-1. Joint rejector > uncertainty
-2. Local > global
-3. Hybrid improves compute-risk
-
----
-
-# 15. Minimal First Submission
-
-- 2D EP
-- PINO backbone
-- global + local rejector
-- oracle fallback
-- shift experiments
-
----
-
-# 16. End Goal
-
-A NeurIPS-level paper showing:
-
-> Reliable, physics-aware selective simulation is necessary for deployable biomedical digital twins.
-
+`L_op = lambda_data * L_data + lambda_phys * L_phys + lambda_bc * L_bc (+ lambda_ic * L_ic if needed)`
+
+Outputs to freeze:
+- strongest checkpoint,
+- baseline plots (ID + rollout),
+- residual and drift artifacts.
+
+## Stage 2 - Rejector target construction
+Build supervision from realized error.
+
+Global targets:
+- rollout RMSE, event error, max local error.
+- use continuous/ranking target if possible (preferred over hard bins).
+
+Local targets:
+- patchwise local L2 error,
+- unsafe patch map via threshold,
+- optional dilation for class-balance stability.
+
+## Stage 3 - Rejector training
+Freeze backbone first.
+
+Loss options:
+- BCE / focal for safe-vs-unsafe,
+- ranking loss for ordering quality,
+- coverage penalty for target acceptance rate.
+
+Local regularization:
+`L = L_risk + lambda_cov * L_cov + lambda_tv * L_smooth`
+
+## Stage 4 - Joint fine-tuning
+Unfreeze only later backbone layers.
+
+Rationale:
+- full end-to-end updates can destabilize backbone and make rejector compensate for poor simulation quality.
+
+## 9) Calibration Plan
+
+Always calibrate defer thresholds on validation splits.
+
+Report three operating modes:
+- fixed target coverage,
+- fixed accepted risk,
+- fixed fallback budget.
+
+## 10) Metrics
+
+### Predictive
+- RMSE, relative RMSE, MAE.
+- rollout RMSE vs horizon.
+- event-level metrics (activation time MAE, CV error, spiral-tip trajectory error).
+
+### Selective
+Global:
+- coverage,
+- selective risk,
+- AURC-style area,
+- accepted RMSE at fixed coverage,
+- coverage at fixed accepted RMSE.
+
+Local:
+- localized coverage,
+- localized selective risk,
+- unsafe-region IoU / Dice,
+- accepted-region RMSE,
+- error concentration ratio.
+
+### Physics
+- PDE residual norm,
+- BC violation,
+- residual drift over rollout.
+
+### Efficiency
+- surrogate / fallback / hybrid latency,
+- deferred fraction,
+- speedup vs full solver,
+- risk per unit compute.
+
+## 11) Experiment Matrix
+
+## Block A - Backbone study
+- Models: `FNO`, `PINO`.
+- Regimes: one-step, rollout, ID, parameter shift, geometry shift, long horizon.
+- Goal: establish strong baseline simulator.
+
+## Block B - Global selective study
+- Methods: confidence-only, uncertainty-only, residual-only, joint score, oracle global selector.
+- Outputs: risk-coverage and compute-risk curves.
+- Goal: prove selective utility before local routing.
+
+## Block C - Local selective study (main)
+- Methods: global rejector, local uncertainty-only, local residual-only, local joint, oracle local.
+- Fallbacks: oracle repair first, optional numerical patch refinement.
+- Outputs: local coverage-risk, accepted/rejected error split, hybrid Pareto.
+
+## 12) Paper Assets Checklist
+
+### Priority tables
+1. Backbone performance.
+2. Global selective at matched coverage.
+3. Global selective at matched accepted risk.
+4. Local mask quality.
+5. Hybrid routing benefit.
+6. Shift robustness.
+7. Ablations.
+
+### Priority figures
+1. System overview diagram.
+2. Qualitative EP case comparisons.
+3. Risk-coverage curves (global + local).
+4. Compute-risk Pareto frontier.
+5. Error concentration plots.
+6. Rollout stability under selection.
+7. Shift robustness panels.
+8. Ablation heatmap.
+
+## 13) Theory-to-Experiment Mapping
+
+Keep theory testable:
+- If theorem uses accepted risk -> report accepted RMSE/event error + coverage.
+- If theorem uses residual-aware scoring -> include residual-only and joint baselines + residual-error correlation.
+- If theorem is local -> report local coverage/risk and rejected-region error concentration.
+
+## 14) Oracle Studies (Required)
+
+- Oracle global selector: reject highest true-error cases.
+- Oracle local selector: reject highest true-error patches.
+- Oracle repair: replace rejected regions with trusted solver outputs.
+
+Purpose: separate selector quality from repair quality and quantify headroom.
+
+## 15) Failure Analysis (Required Section)
+
+Add a dedicated subsection: **Where does the rejector fail?**
+
+Analyze:
+- false accepts with low residual but high error,
+- false rejects in complex yet safe regions,
+- shift regimes dominated by OOD proxies,
+- horizons where residual signals rise too late.
+
+## 16) 10-12 Week Schedule
+
+- **Weeks 1-2:** data export pipeline, ID dataset, `FNO/PINO` baseline.
+- **Weeks 3-4:** shift splits, rollout + event evaluation, baseline tables frozen.
+- **Weeks 5-6:** feature extraction, global rejector, calibration, global selective results.
+- **Weeks 7-8:** local patchwise rejector, local targets, oracle local studies.
+- **Weeks 9-10:** hybrid fallback routing, compute-risk Pareto, major ablations.
+- **Weeks 11-12:** finalize figures/tables, write results/discussion, lock appendix/theory links.
+
+## 17) Go/No-Go Criteria
+
+Project is strong if at least two hold:
+1. Joint physics+uncertainty rejector beats uncertainty-only.
+2. Local defer beats global defer at equal fallback budget.
+3. Hybrid retains substantial speedup while reducing catastrophic errors.
+
+## 18) Recommended First Submission Configuration
+
+- Domain: 2D cardiac EP.
+- Base models: `FNO + PINO`.
+- Selective methods: global + local (patchwise).
+- Features: uncertainty + residual + rollout drift.
+- Fallback: oracle local repair first; practical patch refinement optional.
+- Experiments: ID, parameter shift, geometry shift, long rollout.
+- Theory: one accepted-risk proposition + one local variant.
+- Framing: deployment-oriented risk-coverage-compute trade-off.
