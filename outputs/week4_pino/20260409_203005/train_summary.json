@@ -1,0 +1,18 @@
+{
+  "run_dir": "outputs/week4_pino/20260409_203005",
+  "seed": 42,
+  "device": "cuda",
+  "model_type": "pino",
+  "lambdas": {
+    "lambda_data": 1.0,
+    "lambda_phys": 0.03,
+    "lambda_bc": 0.005,
+    "lambda_ic": 0.02
+  },
+  "train_samples": 2528,
+  "val_samples": 632,
+  "test_samples": 632,
+  "best_checkpoint": "outputs/week4_pino/20260409_203005/best_fno.pt",
+  "final_val_rmse": 0.015594567014868436,
+  "final_val_mae": 0.0028147054040403682
+}

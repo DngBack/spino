@@ -1,0 +1,9 @@
+{
+  "fno_metrics_path": "outputs/week3_fno_eval/20260409_202231/metrics_summary.json",
+  "pino_metrics_path": "outputs/week4_pino_eval/20260409_203005/metrics_summary.json",
+  "comparison_csv": "outputs/week4_comparison/20260409_203005/fno_vs_pino_metrics.csv",
+  "plots": [
+    "outputs/week4_comparison/20260409_203005/fno_vs_pino_val_rmse.png",
+    "outputs/week4_comparison/20260409_203005/fno_vs_pino_bar.png"
+  ]
+}

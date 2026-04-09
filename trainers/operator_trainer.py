@@ -9,6 +9,8 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
+from losses.physics_loss import bc_loss, ic_loss, pde_residual_loss
+
 
 @dataclass
 class TrainConfig:
@@ -17,6 +19,11 @@ class TrainConfig:
     learning_rate: float = 1e-3
     weight_decay: float = 1e-6
     device: str = "cpu"
+    model_type: str = "fno"  # fno|pino
+    lambda_data: float = 1.0
+    lambda_phys: float = 0.0
+    lambda_bc: float = 0.0
+    lambda_ic: float = 0.0
 
 
 def evaluate_loss(model: torch.nn.Module, loader: DataLoader, device: str) -> dict[str, float]:
@@ -64,7 +71,24 @@ def train_operator(
             x = batch["x"].to(device)
             y = batch["y"].to(device)
             pred = model(x)
-            loss = F.mse_loss(pred, y)
+            data_l = F.mse_loss(pred, y)
+            loss = cfg.lambda_data * data_l
+            if cfg.model_type == "pino":
+                phys_l = pde_residual_loss(
+                    x_t=x,
+                    pred_t1=pred,
+                    params=batch["params"].to(device),
+                    dt=batch["dt"].to(device),
+                    mask=batch["mask"].to(device),
+                )
+                bc_l = bc_loss(pred_t1=pred, mask=batch["mask"].to(device))
+                ic_l = ic_loss(pred_t1=pred, y_t1=y, t_index=batch["t_index"].to(device))
+                loss = (
+                    cfg.lambda_data * data_l
+                    + cfg.lambda_phys * phys_l
+                    + cfg.lambda_bc * bc_l
+                    + cfg.lambda_ic * ic_l
+                )
             optimizer.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
