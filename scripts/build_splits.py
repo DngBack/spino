@@ -257,6 +257,17 @@ def main() -> None:
         f"Geo shift test_shift: {len(split_geo['test_shift_case_ids'])}"
     )
 
+    by_sz: dict[str, int] = defaultdict(int)
+    for cid in id_test:
+        by_sz[case_by_id[cid].get("scenario_type", "unknown")] += 1
+    small = [f"{s}={n}" for s, n in sorted(by_sz.items()) if n < 5]
+    if small:
+        print(
+            "[WARN] ID test has scenarios with <5 cases: "
+            + ", ".join(small)
+            + " — increase cases-per-scenario or loosen ratios for stable paper metrics."
+        )
+
 
 if __name__ == "__main__":
     main()

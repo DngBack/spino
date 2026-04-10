@@ -103,6 +103,40 @@ Moc khuyen nghi:
 Moc toi thieu de paper van on:
 - `~500` case da dang + shift protocols ro rang.
 
+### 6a) Tao du lieu synthetic — paper preset (trong repo)
+
+Script: `scripts/generate_synthetic_ep2d_dataset.py`.
+
+- **Preset paper** (`--paper`): dat `dataset_version=v1.0`, horizon toi thieu 160, ~**96 case / scenario** (~384 tong), tang geometry + seed de grid du lon; tu dong **mo rong** so `parameter_set` neu grid < `cases_per-scenario`.
+- **`--cases-per-scenario N`**: moi scenario dung **dung N** case (grid deterministic).
+- **`--num-cases M`**: chia deu cho 4 scenario (`ceil(M/4)` moi scenario).
+- **`--output-dir`**: alias cua `--output-root` (thuong la thu muc goc repo).
+
+Vi du day du (sau do manifest + splits **v1.0**):
+
+```bash
+# Tu thu muc goc repo spino
+python3 scripts/generate_synthetic_ep2d_dataset.py --paper --output-dir . --clean
+
+python3 scripts/build_manifest.py \
+  --metadata-dir data/metadata/case_metadata \
+  --output-manifest data/metadata/dataset_manifest.v1.0.json \
+  --dataset-version v1.0 \
+  --generation-config-path data/metadata/generation_config.v1.0.json \
+  --split-id-path data/splits/split_v1.0_id.json \
+  --split-parameter-path data/splits/split_v1.0_param_shift.json \
+  --split-geometry-path data/splits/split_v1.0_geometry_shift.json \
+  --split-long-rollout-path data/splits/split_v1.0_long_rollout.json
+
+python3 scripts/build_splits.py \
+  --manifest data/metadata/dataset_manifest.v1.0.json \
+  --output-dir data/splits \
+  --dataset-version v1.0 \
+  --seed 42
+```
+
+Neu can **lon hon** preset (ví du ~800–1500 case): tang `--cases-per-scenario` (vi du `200`) hoac `--num-cases 1200`. Tiep theo cap nhat `dataset_manifest.*` va training scripts de trỏ `split_v1.0_*.json` / manifest v1.0.
+
 ---
 
 ## 7) Split protocol cho paper

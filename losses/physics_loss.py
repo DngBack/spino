@@ -52,6 +52,34 @@ def pde_residual_loss(
     return torch.mean(res_v**2) + torch.mean(res_r**2)
 
 
+def pde_residual_magnitude_map(
+    x_t: torch.Tensor,
+    pred_t1: torch.Tensor,
+    params: torch.Tensor,
+    dt: torch.Tensor,
+    mask: torch.Tensor,
+) -> torch.Tensor:
+    """
+    Spatial residual magnitude sqrt(res_v^2 + res_r^2), shape [B,1,H,W].
+    """
+    v_t = x_t[:, 0]
+    r_t = x_t[:, 1]
+    v_n = pred_t1[:, 0]
+    r_n = pred_t1[:, 1]
+    m = mask if mask.ndim == 3 else mask[:, 0]
+    diffusion = params[:, 0].view(-1, 1, 1)
+    excitability = params[:, 1].view(-1, 1, 1)
+    restitution = params[:, 2].view(-1, 1, 1)
+    dt_ = dt.view(-1, 1, 1)
+    lap = laplacian2d(v_t)
+    reaction = excitability * v_t * (1.0 - v_t) * (v_t - 0.08) - r_t
+    recov = restitution * (v_t - 0.15 * r_t)
+    res_v = ((v_n - v_t) / dt_ - (diffusion * lap + reaction)) * m
+    res_r = ((r_n - r_t) / dt_ - recov) * m
+    mag = torch.sqrt(res_v**2 + res_r**2 + 1e-12).unsqueeze(1)
+    return mag
+
+
 def bc_loss(pred_t1: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
     """
     Penalize non-zero border values inside domain as a simple boundary stabilizer.

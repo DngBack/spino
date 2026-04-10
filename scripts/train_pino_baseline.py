@@ -14,6 +14,7 @@ from torch.utils.data import DataLoader
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from datasets.ep_batch_sampler import ResolutionBatchSampler
 from datasets.ep_operator_dataset import EPOneStepDataset
 from models.backbones.pino_fno import PINOFNO2d
 from trainers.operator_trainer import TrainConfig, train_operator
@@ -57,8 +58,14 @@ def main() -> None:
     train_ds = EPOneStepDataset(args.manifest, args.split, split_name="train")
     val_ds = EPOneStepDataset(args.manifest, args.split, split_name="val")
     test_ds = EPOneStepDataset(args.manifest, args.split, split_name="test")
-    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=0)
-    val_loader = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=0)
+    train_bs = ResolutionBatchSampler(
+        train_ds, batch_size=args.batch_size, shuffle=True, drop_last=False, seed=args.seed
+    )
+    val_bs = ResolutionBatchSampler(
+        val_ds, batch_size=args.batch_size, shuffle=False, drop_last=False, seed=args.seed + 1
+    )
+    train_loader = DataLoader(train_ds, batch_sampler=train_bs, num_workers=0)
+    val_loader = DataLoader(val_ds, batch_sampler=val_bs, num_workers=0)
 
     model = PINOFNO2d(
         in_channels=2,

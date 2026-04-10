@@ -21,6 +21,7 @@ import numpy as np
 
 
 SCENARIOS = ["planar_wave", "centrifugal_wave", "stable_spiral", "spiral_breakup"]
+SCENARIO_SEED_BIAS = {name: i * 5_000_000 for i, name in enumerate(SCENARIOS)}
 
 
 def now_iso() -> str:
@@ -47,16 +48,85 @@ class SimConfig:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate synthetic EP2D dataset + case metadata.")
     parser.add_argument("--dataset-version", type=str, default="v0.2")
-    parser.add_argument("--output-root", type=Path, default=Path("."))
+    parser.add_argument("--output-root", type=Path, default=Path("."), help="Repo root (data/ is created under here).")
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        default=None,
+        help="Alias for --output-root (same as passing repo root where data/ lives).",
+    )
+    parser.add_argument(
+        "--paper",
+        action="store_true",
+        help="Paper-oriented defaults: ~96 cases per scenario (~384 total), 2 resolutions, longer horizon.",
+    )
     parser.add_argument("--num-parameter-sets", type=int, default=3)
     parser.add_argument("--num-seeds-per-parameter-set", type=int, default=4)
     parser.add_argument("--num-geometries", type=int, default=3)
+    parser.add_argument(
+        "--cases-per-scenario",
+        type=int,
+        default=None,
+        help="Cap exactly N cases per scenario (deterministic grid). Automatically expands param sets if needed.",
+    )
+    parser.add_argument(
+        "--num-cases",
+        type=int,
+        default=None,
+        help="Total cases across all scenarios; sets cases-per-scenario = ceil(num_cases / len(SCENARIOS)).",
+    )
     parser.add_argument("--num-steps", type=int, default=120)
     parser.add_argument("--resolutions", type=str, default="64,96")
     parser.add_argument("--dt", type=float, default=0.1)
     parser.add_argument("--global-seed", type=int, default=20260409)
     parser.add_argument("--clean", action="store_true", help="Remove previous generated synthetic dataset artifacts.")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if args.output_dir is not None:
+        args.output_root = args.output_dir
+    if args.paper:
+        args.dataset_version = "v1.0"
+        args.num_steps = max(args.num_steps, 160)
+        args.num_geometries = max(args.num_geometries, 8)
+        args.num_seeds_per_parameter_set = max(args.num_seeds_per_parameter_set, 5)
+        if args.cases_per_scenario is None and args.num_cases is None:
+            args.cases_per_scenario = 96
+    if args.num_cases is not None:
+        n = max(1, int(args.num_cases))
+        args.cases_per_scenario = max(1, (n + len(SCENARIOS) - 1) // len(SCENARIOS))
+    return args
+
+
+def build_case_slot_list(
+    num_parameter_sets: int,
+    num_geometries: int,
+    num_seeds: int,
+    resolutions: list[int],
+    cases_per_scenario: int | None,
+) -> tuple[list[tuple[int, int, int, int]], int]:
+    """
+    Deterministic (pidx, gidx, ridx, sidx) tuples. If cases_per_scenario is set, expands
+    num_parameter_sets until the full grid has at least that many slots, then truncates.
+    """
+    n_res = len(resolutions)
+
+    def grid_for_P(P: int) -> list[tuple[int, int, int, int]]:
+        g: list[tuple[int, int, int, int]] = []
+        for pidx in range(1, P + 1):
+            for gidx in range(1, num_geometries + 1):
+                for ridx in range(n_res):
+                    for sidx in range(num_seeds):
+                        g.append((pidx, gidx, ridx, sidx))
+        return g
+
+    P = max(1, num_parameter_sets)
+    slots = grid_for_P(P)
+    if cases_per_scenario is not None:
+        need = int(cases_per_scenario)
+        while len(slots) < need:
+            P += 1
+            slots = grid_for_P(P)
+        slots = slots[:need]
+    return slots, P
 
 
 def laplacian(z: np.ndarray) -> np.ndarray:
@@ -194,114 +264,136 @@ def main() -> None:
     case_meta_root.mkdir(parents=True, exist_ok=True)
 
     all_case_ids: list[str] = []
+    slots, effective_P = build_case_slot_list(
+        args.num_parameter_sets,
+        args.num_geometries,
+        args.num_seeds_per_parameter_set,
+        resolutions,
+        args.cases_per_scenario,
+    )
+
     generation_meta = {
         "dataset_name": "spino_ep2d",
         "dataset_version": args.dataset_version,
         "generator": "synthetic",
         "global_seed": args.global_seed,
-        "num_parameter_sets": args.num_parameter_sets,
+        "num_parameter_sets_requested": args.num_parameter_sets,
+        "effective_num_parameter_sets": effective_P,
         "num_seeds_per_parameter_set": args.num_seeds_per_parameter_set,
         "num_geometries": args.num_geometries,
+        "cases_per_scenario": args.cases_per_scenario,
         "num_steps": args.num_steps,
         "resolutions": resolutions,
         "scenarios": SCENARIOS,
+        "slots_per_scenario": len(slots),
+        "expected_total_cases": len(SCENARIOS) * len(slots),
         "created_at": now_iso(),
     }
 
     for scenario in SCENARIOS:
-        for pidx in range(1, args.num_parameter_sets + 1):
-            diffusion = float(rng.uniform(0.0008, 0.0014))
-            conductivity = float(rng.uniform(0.8, 1.2))
-            excitability = float(rng.uniform(0.10, 0.24))
-            restitution = float(rng.uniform(0.10, 0.35))
+        params_by_p: dict[int, tuple[float, float, float, float]] = {}
+        for pidx, _, _, _ in slots:
+            if pidx not in params_by_p:
+                params_by_p[pidx] = (
+                    float(rng.uniform(0.0008, 0.0014)),
+                    float(rng.uniform(0.8, 1.2)),
+                    float(rng.uniform(0.10, 0.24)),
+                    float(rng.uniform(0.10, 0.35)),
+                )
 
-            for gidx in range(1, args.num_geometries + 1):
-                for ridx, res in enumerate(resolutions):
-                    for sidx in range(args.num_seeds_per_parameter_set):
-                        seed = int(args.global_seed + 10_000 * pidx + 1_000 * gidx + 100 * ridx + sidx)
-                        cfg = SimConfig(
-                            dt=args.dt,
-                            dx=1.0 / float(res),
-                            num_steps=args.num_steps,
-                            h=res,
-                            w=res,
-                            diffusion=diffusion * conductivity,
-                            excitability=excitability,
-                            restitution=restitution,
-                            stimulus_amplitude=float(rng.uniform(0.8, 1.2)),
-                            stimulus_duration=10,
-                            start_step=5,
-                            scenario=scenario,
-                            seed=seed,
-                        )
+        for pidx, gidx, ridx, sidx in slots:
+            diffusion, conductivity, excitability, restitution = params_by_p[pidx]
+            res = resolutions[ridx]
+            seed = int(
+                args.global_seed
+                + SCENARIO_SEED_BIAS[scenario]
+                + 10_000 * pidx
+                + 1_000 * gidx
+                + 100 * ridx
+                + sidx
+            )
+            cfg = SimConfig(
+                dt=args.dt,
+                dx=1.0 / float(res),
+                num_steps=args.num_steps,
+                h=res,
+                w=res,
+                diffusion=diffusion * conductivity,
+                excitability=excitability,
+                restitution=restitution,
+                stimulus_amplitude=float(rng.uniform(0.8, 1.2)),
+                stimulus_duration=10,
+                start_step=5,
+                scenario=scenario,
+                seed=seed,
+            )
 
-                        geom_rng = np.random.default_rng(seed + 77)
-                        geom_mask = make_geometry_mask(res, res, gidx, geom_rng)
-                        traj_v, traj_r = simulate_case(cfg, geom_mask)
+            geom_rng = np.random.default_rng(seed + 77)
+            geom_mask = make_geometry_mask(res, res, gidx, geom_rng)
+            traj_v, traj_r = simulate_case(cfg, geom_mask)
 
-                        case_id = (
-                            f"spino_{scenario}_geo{gidx:02d}_p{pidx:02d}_s{seed}"
-                            f"_r{res}_t{args.num_steps}"
-                        )
-                        tensor_path = processed_root / f"{case_id}.npz"
-                        np.savez_compressed(
-                            tensor_path,
-                            V=traj_v,
-                            R=traj_r,
-                            mask=geom_mask,
-                            V0=traj_v[0],
-                            R0=traj_r[0],
-                        )
-                        tensor_hash = sha256_file(tensor_path)
+            case_id = (
+                f"spino_{scenario}_geo{gidx:02d}_p{pidx:02d}_s{seed}" f"_r{res}_t{args.num_steps}"
+            )
+            tensor_path = processed_root / f"{case_id}.npz"
+            np.savez_compressed(
+                tensor_path,
+                V=traj_v,
+                R=traj_r,
+                mask=geom_mask,
+                V0=traj_v[0],
+                R0=traj_r[0],
+            )
+            tensor_hash = sha256_file(tensor_path)
 
-                        raw_case_path = raw_root / scenario / f"geo{gidx:02d}" / f"p{pidx:02d}" / f"s{seed}"
-                        raw_case_path.mkdir(parents=True, exist_ok=True)
+            raw_case_path = raw_root / scenario / f"geo{gidx:02d}" / f"p{pidx:02d}" / f"s{seed}"
+            raw_case_path.mkdir(parents=True, exist_ok=True)
 
-                        case_meta = {
-                            "case_id": case_id,
-                            "dataset_version": args.dataset_version,
-                            "generator": "synthetic",
-                            "scenario_type": scenario,
-                            "geometry_id": f"geo{gidx:02d}",
-                            "parameter_set_id": f"p{pidx:02d}",
-                            "mesh_or_grid": {
-                                "type": "grid",
-                                "shape": [res, res],
-                                "resolution_tag": f"r{res}",
-                                "dx": cfg.dx,
-                            },
-                            "time": {"dt": cfg.dt, "num_steps": cfg.num_steps, "t_start": 0.0},
-                            "seed": seed,
-                            "parameters": {
-                                "diffusion": diffusion,
-                                "conductivity": conductivity,
-                                "excitability": excitability,
-                                "restitution": restitution,
-                            },
-                            "stimulus": {
-                                "type": "scenario_defined",
-                                "location": None,
-                                "start_step": cfg.start_step,
-                                "duration_steps": cfg.stimulus_duration,
-                                "amplitude": cfg.stimulus_amplitude,
-                            },
-                            "state_channels": {"input_channels": ["V0", "R0"], "output_channels": ["V", "R"]},
-                            "file_paths": {
-                                "raw_case_path": str(raw_case_path.relative_to(base)),
-                                "processed_tensor_path": str(tensor_path.relative_to(base)),
-                            },
-                            "split_tags": ["unassigned"],
-                            "quality_flags": {
-                                "has_nan": bool(np.isnan(traj_v).any() or np.isnan(traj_r).any()),
-                                "has_inf": bool(np.isinf(traj_v).any() or np.isinf(traj_r).any()),
-                                "is_duplicate_hash": False,
-                                "physics_warning": False,
-                            },
-                            "hashes": {"processed_tensor_sha256": tensor_hash},
-                            "created_at": now_iso(),
-                        }
-                        save_json(case_meta_root / f"{case_id}.json", case_meta)
-                        all_case_ids.append(case_id)
+            case_meta = {
+                "case_id": case_id,
+                "dataset_version": args.dataset_version,
+                "generator": "synthetic",
+                "scenario_type": scenario,
+                "geometry_id": f"geo{gidx:02d}",
+                "parameter_set_id": f"p{pidx:02d}",
+                "mesh_or_grid": {
+                    "type": "grid",
+                    "shape": [res, res],
+                    "resolution_tag": f"r{res}",
+                    "dx": cfg.dx,
+                },
+                "time": {"dt": cfg.dt, "num_steps": cfg.num_steps, "t_start": 0.0},
+                "seed": seed,
+                "parameters": {
+                    "diffusion": diffusion,
+                    "conductivity": conductivity,
+                    "excitability": excitability,
+                    "restitution": restitution,
+                },
+                "stimulus": {
+                    "type": "scenario_defined",
+                    "location": None,
+                    "start_step": cfg.start_step,
+                    "duration_steps": cfg.stimulus_duration,
+                    "amplitude": cfg.stimulus_amplitude,
+                },
+                "state_channels": {"input_channels": ["V0", "R0"], "output_channels": ["V", "R"]},
+                "file_paths": {
+                    "raw_case_path": str(raw_case_path.relative_to(base)),
+                    "processed_tensor_path": str(tensor_path.relative_to(base)),
+                },
+                "split_tags": ["unassigned"],
+                "quality_flags": {
+                    "has_nan": bool(np.isnan(traj_v).any() or np.isnan(traj_r).any()),
+                    "has_inf": bool(np.isinf(traj_v).any() or np.isinf(traj_r).any()),
+                    "is_duplicate_hash": False,
+                    "physics_warning": False,
+                },
+                "hashes": {"processed_tensor_sha256": tensor_hash},
+                "created_at": now_iso(),
+            }
+            save_json(case_meta_root / f"{case_id}.json", case_meta)
+            all_case_ids.append(case_id)
 
     gen_cfg_path = base / f"data/metadata/generation_config.{args.dataset_version}.json"
     save_json(gen_cfg_path, generation_meta)
