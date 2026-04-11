@@ -1,0 +1,15 @@
+{
+  "family": "geometry_shift",
+  "num_cases": 416,
+  "model_rollout_seconds": 0.28776937176119716,
+  "one_step_mae": 0.0019569787550258646,
+  "one_step_relative_rmse": 0.12985386428996348,
+  "one_step_rmse": 0.00813626798480982,
+  "rollout_mae": 0.027142642699450683,
+  "rollout_relative_rmse": 1.073912497323293,
+  "rollout_rmse": 0.0657619234340158,
+  "rollout_steps": 199.0,
+  "solver_seconds": 0.02342612096309984,
+  "model_steps_per_second": 691.5259910465328,
+  "solver_steps_per_second": 8494.790935019038
+}

@@ -1,0 +1,2 @@
+split,num_test_cases,one_step_rmse,one_step_mae,one_step_relative_rmse,rollout_rmse,rollout_mae,rollout_relative_rmse,model_rollout_seconds_total,solver_seconds_total,model_steps_per_second,solver_steps_per_second
+id_test,180,0.007789733429025445,0.002037486113840714,0.12253562083674802,0.06555607131578856,0.024646133230999113,1.019582498073578,50.16737764375284,4.069393700920045,714.0098143930098,8802.294059653528

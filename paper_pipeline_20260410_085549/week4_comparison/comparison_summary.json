@@ -1,0 +1,9 @@
+{
+  "fno_metrics_path": "outputs/paper_pipeline_20260410_085549/week3_fno_eval/metrics_summary.json",
+  "pino_metrics_path": "outputs/paper_pipeline_20260410_085549/week4_pino_shift_for_compare/per_split/id_summary.json",
+  "comparison_csv": "outputs/paper_pipeline_20260410_085549/week4_comparison/fno_vs_pino_metrics.csv",
+  "plots": [
+    "outputs/paper_pipeline_20260410_085549/week4_comparison/fno_vs_pino_val_rmse.png",
+    "outputs/paper_pipeline_20260410_085549/week4_comparison/fno_vs_pino_bar.png"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "split": "id_test",
+  "num_test_cases": 180,
+  "one_step_rmse": 0.007789733429025445,
+  "one_step_mae": 0.002037486113840714,
+  "one_step_relative_rmse": 0.12253562083674802,
+  "rollout_rmse": 0.06555607131578856,
+  "rollout_mae": 0.024646133230999113,
+  "rollout_relative_rmse": 1.019582498073578,
+  "model_rollout_seconds_total": 50.16737764375284,
+  "solver_seconds_total": 4.069393700920045,
+  "model_steps_per_second": 714.0098143930098,
+  "solver_steps_per_second": 8802.294059653528
+}

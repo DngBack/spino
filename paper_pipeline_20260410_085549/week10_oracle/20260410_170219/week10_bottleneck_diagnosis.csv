@@ -1,0 +1,5 @@
+family,global_headroom,local_headroom,local_stronger_upside,target_coverage
+id,0.0,0.0007870987756177783,True,0.75
+parameter_shift,5.576759576797485e-06,0.0007649654289707541,True,0.75
+geometry_shift,0.0,0.0007905028760433197,True,0.75
+long_rollout,0.0,0.0007870987756177783,True,0.75

@@ -1,0 +1,30 @@
+[
+  {
+    "family": "id",
+    "target_coverage": 0.75,
+    "global_headroom": 0.0,
+    "local_headroom": 0.0007870987756177783,
+    "local_stronger_upside": true
+  },
+  {
+    "family": "parameter_shift",
+    "target_coverage": 0.75,
+    "global_headroom": 5.576759576797485e-06,
+    "local_headroom": 0.0007649654289707541,
+    "local_stronger_upside": true
+  },
+  {
+    "family": "geometry_shift",
+    "target_coverage": 0.75,
+    "global_headroom": 0.0,
+    "local_headroom": 0.0007905028760433197,
+    "local_stronger_upside": true
+  },
+  {
+    "family": "long_rollout",
+    "target_coverage": 0.75,
+    "global_headroom": 0.0,
+    "local_headroom": 0.0007870987756177783,
+    "local_stronger_upside": true
+  }
+]

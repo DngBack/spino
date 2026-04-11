@@ -1,0 +1,866 @@
+[
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.028118114918470383
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.028118114918470383
+  },
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03601931035518646
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03586148843169212
+  },
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.042265377938747406
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.04219907522201538
+  },
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.04505639895796776
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.04505639895796776
+  },
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.04948742687702179
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.049335770308971405
+  },
+  {
+    "family": "id",
+    "selector_type": "global_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05767005309462547
+  },
+  {
+    "family": "id",
+    "selector_type": "global_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05762471631169319
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0027266123797744513
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0013338709250092506
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0013633063063025475
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0006669355207122862
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.00276899803429842
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0015136334113776684
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0016613990301266313
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0009081801981665194
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.002718070289120078
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0017608386697247624
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0019026492955163121
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.001232587150298059
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002672516508027911
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.0018854177324101329
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002004387555643916
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.001414063386619091
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.002630499191582203
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0020100960973650217
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0021043994929641485
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.001608076854608953
+  },
+  {
+    "family": "id",
+    "selector_type": "local_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002550656208768487
+  },
+  {
+    "family": "id",
+    "selector_type": "local_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002266884548589587
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002295590238645673
+  },
+  {
+    "family": "id",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0020401959773153067
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.037148650735616684
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.03700418025255203
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.04340957850217819
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.04323502257466316
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.04809432849287987
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.04804687947034836
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.05018452927470207
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.050178952515125275
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.053615156561136246
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.05373047664761543
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.06117174029350281
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.06125880777835846
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.002661385340616107
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0013663091231137514
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0013306925538927317
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0006831545615568757
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0027354613412171602
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0015824430156499147
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0016412768745794892
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0009494658443145454
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0027432681526988745
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0018278955249115825
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.001920288079418242
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0012795268557965755
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.0027137640863656998
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.0019487986573949456
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002035323064774275
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.0014615990221500397
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0026804935187101364
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0020689419470727444
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0021443949081003666
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0016551535809412599
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0026025220286101103
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002314792713150382
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.00234226998873055
+  },
+  {
+    "family": "parameter_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0020833134185522795
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.024354010820388794
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.024354012683033943
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03289063274860382
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03270410746335983
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.039318397641181946
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.03922358900308609
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.04225292429327965
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.04225292429327965
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.047172341495752335
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.04707498103380203
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05620862543582916
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "global_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05602054297924042
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0027580999303609133
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0013469539117068052
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0013790499651804566
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0006734770140610635
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0028006001375615597
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0015397355891764164
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.001680360292084515
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0009238413185812533
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.002752910600975156
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0017882735701277852
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0019270374905318022
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0012517916038632393
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.0027029006741940975
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.0019123977981507778
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002027175622060895
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.001434298581443727
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0026550751645118
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.002036347519606352
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0021240604110062122
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.001629078178666532
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0025682789273560047
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002291258657351136
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0023114511277526617
+  },
+  {
+    "family": "geometry_shift",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002062132814899087
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.028118114918470383
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.028118114918470383
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03601931035518646
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.03586148843169212
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.042265377938747406
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.04219907522201538
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.04505639895796776
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.04505639895796776
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.04948742687702179
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.049335770308971405
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05767005309462547
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "global_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.05762471631169319
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0027266123797744513
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0013338709250092506
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.5,
+    "selective_risk": 0.0013633063063025475
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.5,
+    "selective_risk": 0.0006669355207122862
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.00276899803429842
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0015136334113776684
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0016613990301266313
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.6000000238418579,
+    "selective_risk": 0.0009081801981665194
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.002718070289120078
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0017608386697247624
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.0019026492955163121
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.699999988079071,
+    "selective_risk": 0.001232587150298059
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002672516508027911
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.0018854177324101329
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.75,
+    "selective_risk": 0.002004387555643916
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.75,
+    "selective_risk": 0.001414063386619091
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.002630499191582203
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0020100960973650217
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.0021043994929641485
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.800000011920929,
+    "selective_risk": 0.001608076854608953
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002550656208768487
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002266884548589587
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_learned",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.002295590238645673
+  },
+  {
+    "family": "long_rollout",
+    "selector_type": "local_hybrid_oracle",
+    "coverage": 0.8999999761581421,
+    "selective_risk": 0.0020401959773153067
+  }
+]

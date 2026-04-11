@@ -1,0 +1,20 @@
+Run bundle: outputs/paper_pipeline_20260410_085549
+Manifest:   data/metadata/dataset_manifest.v1.0.json
+Split ID:   data/splits/split_v1.0_id.json
+
+FNO checkpoint:   outputs/week3_fno/20260410_085629/best_fno.pt
+PINO checkpoint:  outputs/week4_pino/20260410_101644/best_fno.pt
+Global rejector:  outputs/week7_global_rejector/20260410_125539/best_global_rejector.pt
+Local rejector:   outputs/week9_local_rejector/20260410_125622/best_local_rejector.pt
+Feature CSV:      outputs/paper_pipeline_20260410_085549/week6_features/global_reliability_features.csv
+
+Week 3 ID eval:     outputs/paper_pipeline_20260410_085549/week3_fno_eval/
+Week 4 compare:     outputs/paper_pipeline_20260410_085549/week4_comparison/
+Week 5 shift (FNO): outputs/paper_pipeline_20260410_085549/week5_shift_eval/
+Week 6 features:    outputs/paper_pipeline_20260410_085549/week6_features/
+Week 7 global eval: outputs/paper_pipeline_20260410_085549/week7_global_eval/
+Week 8 baselines:   outputs/paper_pipeline_20260410_085549/week8_global_baselines/
+Week 9 local eval:  outputs/paper_pipeline_20260410_085549/week9_local_eval/
+Week 10 oracle:     outputs/paper_pipeline_20260410_085549/week10_oracle/
+Week 11 hybrid:     outputs/paper_pipeline_20260410_085549/week11_hybrid/
+Week 12 main:       outputs/paper_pipeline_20260410_085549/week12_main/

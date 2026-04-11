@@ -1,0 +1,38 @@
+[
+  {
+    "family": "id",
+    "num_cases": 180,
+    "tau": 6.440747261047363,
+    "coverage": 0.8444444444444444,
+    "selective_risk": 0.053284939378499985,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.03164362162351608
+  },
+  {
+    "family": "parameter_shift",
+    "num_cases": 552,
+    "tau": 6.440747261047363,
+    "coverage": 0.8333333333333334,
+    "selective_risk": 0.05631965398788452,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.03674797713756561
+  },
+  {
+    "family": "geometry_shift",
+    "num_cases": 416,
+    "tau": 6.440747261047363,
+    "coverage": 0.7932692307692307,
+    "selective_risk": 0.04646569490432739,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.03023957833647728
+  },
+  {
+    "family": "long_rollout",
+    "num_cases": 180,
+    "tau": 6.440747261047363,
+    "coverage": 0.8444444444444444,
+    "selective_risk": 0.053284939378499985,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.03164362162351608
+  }
+]

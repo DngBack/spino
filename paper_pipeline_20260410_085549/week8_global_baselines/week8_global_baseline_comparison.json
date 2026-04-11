@@ -1,0 +1,202 @@
+[
+  {
+    "family": "id",
+    "method": "uncertainty_only",
+    "tau": 8.304839866468683e-05,
+    "num_cases": 180,
+    "coverage": 0.7777777777777778,
+    "selective_risk": 0.07238757610321045,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.09535209089517593
+  },
+  {
+    "family": "id",
+    "method": "residual_only",
+    "tau": 0.012240851297974586,
+    "num_cases": 180,
+    "coverage": 0.8111111111111111,
+    "selective_risk": 0.05063696578145027,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.031785301864147186
+  },
+  {
+    "family": "id",
+    "method": "drift_only",
+    "tau": 0.04560335725545883,
+    "num_cases": 180,
+    "coverage": 0.8333333333333334,
+    "selective_risk": 0.05232404172420502,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.03167615830898285
+  },
+  {
+    "family": "id",
+    "method": "ood_only",
+    "tau": 0.00013811759708914906,
+    "num_cases": 180,
+    "coverage": 0.7888888888888889,
+    "selective_risk": 0.06036984920501709,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.055902428925037384
+  },
+  {
+    "family": "id",
+    "method": "joint",
+    "tau": 6.440747261047363,
+    "num_cases": 180,
+    "coverage": 0.8444444444444444,
+    "selective_risk": 0.053284939378499985,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.031692031770944595
+  },
+  {
+    "family": "parameter_shift",
+    "method": "uncertainty_only",
+    "tau": 8.304839866468683e-05,
+    "num_cases": 552,
+    "coverage": 0.7807971014492754,
+    "selective_risk": 0.0765814408659935,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.09506598114967346
+  },
+  {
+    "family": "parameter_shift",
+    "method": "residual_only",
+    "tau": 0.012240851297974586,
+    "num_cases": 552,
+    "coverage": 0.8532608695652174,
+    "selective_risk": 0.05792693793773651,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.03701264038681984
+  },
+  {
+    "family": "parameter_shift",
+    "method": "drift_only",
+    "tau": 0.04560335725545883,
+    "num_cases": 552,
+    "coverage": 0.8061594202898551,
+    "selective_risk": 0.054194048047065735,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.036753177642822266
+  },
+  {
+    "family": "parameter_shift",
+    "method": "ood_only",
+    "tau": 0.00013811759708914906,
+    "num_cases": 552,
+    "coverage": 0.7844202898550725,
+    "selective_risk": 0.06383059173822403,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.06257270276546478
+  },
+  {
+    "family": "parameter_shift",
+    "method": "joint",
+    "tau": 6.440747261047363,
+    "num_cases": 552,
+    "coverage": 0.8333333333333334,
+    "selective_risk": 0.05631965398788452,
+    "overall_risk": 0.06844507902860641,
+    "aurc": 0.036796651780605316
+  },
+  {
+    "family": "geometry_shift",
+    "method": "uncertainty_only",
+    "tau": 8.304839866468683e-05,
+    "num_cases": 416,
+    "coverage": 0.7475961538461539,
+    "selective_risk": 0.07482919842004776,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.09957706928253174
+  },
+  {
+    "family": "geometry_shift",
+    "method": "residual_only",
+    "tau": 0.012240851297974586,
+    "num_cases": 416,
+    "coverage": 0.7884615384615384,
+    "selective_risk": 0.046015284955501556,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.030376117676496506
+  },
+  {
+    "family": "geometry_shift",
+    "method": "drift_only",
+    "tau": 0.04560335725545883,
+    "num_cases": 416,
+    "coverage": 0.7764423076923077,
+    "selective_risk": 0.044866323471069336,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.03016902133822441
+  },
+  {
+    "family": "geometry_shift",
+    "method": "ood_only",
+    "tau": 0.00013811759708914906,
+    "num_cases": 416,
+    "coverage": 0.7740384615384616,
+    "selective_risk": 0.060073401778936386,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.059983499348163605
+  },
+  {
+    "family": "geometry_shift",
+    "method": "joint",
+    "tau": 6.440747261047363,
+    "num_cases": 416,
+    "coverage": 0.7932692307692307,
+    "selective_risk": 0.04646569490432739,
+    "overall_risk": 0.06461607664823532,
+    "aurc": 0.03026559203863144
+  },
+  {
+    "family": "long_rollout",
+    "method": "uncertainty_only",
+    "tau": 8.304839866468683e-05,
+    "num_cases": 180,
+    "coverage": 0.7777777777777778,
+    "selective_risk": 0.07238757610321045,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.09535209089517593
+  },
+  {
+    "family": "long_rollout",
+    "method": "residual_only",
+    "tau": 0.012240851297974586,
+    "num_cases": 180,
+    "coverage": 0.8111111111111111,
+    "selective_risk": 0.05063696578145027,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.031785301864147186
+  },
+  {
+    "family": "long_rollout",
+    "method": "drift_only",
+    "tau": 0.04560335725545883,
+    "num_cases": 180,
+    "coverage": 0.8333333333333334,
+    "selective_risk": 0.05232404172420502,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.03167615830898285
+  },
+  {
+    "family": "long_rollout",
+    "method": "ood_only",
+    "tau": 0.00013811759708914906,
+    "num_cases": 180,
+    "coverage": 0.7888888888888889,
+    "selective_risk": 0.06036984920501709,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.055902428925037384
+  },
+  {
+    "family": "long_rollout",
+    "method": "joint",
+    "tau": 6.440747261047363,
+    "num_cases": 180,
+    "coverage": 0.8444444444444444,
+    "selective_risk": 0.053284939378499985,
+    "overall_risk": 0.06555607169866562,
+    "aurc": 0.031692031770944595
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "dataset_name": "spino_ep2d",
+  "dataset_version": "v1.0",
+  "num_manifest_cases": 1200,
+  "num_loaded_cases": 1200,
+  "num_missing_metadata": 0,
+  "scenario_counts": {
+    "centrifugal_wave": 300,
+    "planar_wave": 300,
+    "spiral_breakup": 300,
+    "stable_spiral": 300
+  },
+  "resolution_counts": {
+    "r64": 608,
+    "r96": 592
+  },
+  "generator_counts": {
+    "synthetic": 1200
+  },
+  "num_unique_geometries": 3,
+  "num_unique_seeds": 1200,
+  "num_steps_stats": {
+    "min": 200.0,
+    "max": 200.0,
+    "mean": 200.0
+  },
+  "quality_flag_counts": {
+    "has_nan": 0,
+    "has_inf": 0,
+    "is_duplicate_hash": 0,
+    "physics_warning": 0
+  }
+}

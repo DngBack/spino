@@ -1,0 +1,6 @@
+=== DATA QC SUMMARY ===
+Manifest: data/metadata/dataset_manifest.v1.0.json
+Total cases: 1200
+Errors: 0
+Warnings: 0
+[OK] QC passed.

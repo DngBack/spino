@@ -1,0 +1,47 @@
+[
+  {
+    "method": "uncertainty_only",
+    "tau_mean": 8.30499632381058e-05,
+    "tau_std": 1.0685986605872732e-08,
+    "coverage_mean": 0.8025925925925929,
+    "coverage_std": 0.003434673516850248,
+    "selective_risk_mean": 0.07135935152570407,
+    "selective_risk_std": 0.004657429532668417
+  },
+  {
+    "method": "residual_only",
+    "tau_mean": 0.0121858775926133,
+    "tau_std": 0.0005989683790866156,
+    "coverage_mean": 0.8044444444444445,
+    "coverage_std": 0.0061530547132726265,
+    "selective_risk_mean": 0.05067742553850015,
+    "selective_risk_std": 0.0035770752233242786
+  },
+  {
+    "method": "drift_only",
+    "tau_mean": 0.04506934508681297,
+    "tau_std": 0.005232018559667634,
+    "coverage_mean": 0.801666666666667,
+    "coverage_std": 0.003255258487267941,
+    "selective_risk_mean": 0.050553158422311145,
+    "selective_risk_std": 0.003963545205784539
+  },
+  {
+    "method": "ood_only",
+    "tau_mean": 0.00014703208192562062,
+    "tau_std": 2.174331432022177e-05,
+    "coverage_mean": 0.8035185185185186,
+    "coverage_std": 0.00616697252049876,
+    "selective_risk_mean": 0.06220609198013941,
+    "selective_risk_std": 0.003477295246577653
+  },
+  {
+    "method": "joint",
+    "tau_mean": 5.570426074663798,
+    "tau_std": 2.7449508659198862,
+    "coverage_mean": 0.8033333333333336,
+    "coverage_std": 0.004206598774666854,
+    "selective_risk_mean": 0.05046859309077263,
+    "selective_risk_std": 0.004250997585611649
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "split": "test",
+  "num_eval_points": 540,
+  "mean_iou": 0.3035633321161623,
+  "mean_dice": 0.46505204913792786,
+  "patch_stride": 4,
+  "risk_quantile": 0.75,
+  "oracle_note": "Oracle patch mask equals supervision target (GT-derived); perfect predictor would achieve IoU=1 vs that target."
+}
