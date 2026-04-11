@@ -73,11 +73,14 @@ def train_global_rejector(
 
         model.eval()
         with torch.no_grad():
-            xvt = torch.from_numpy(x_val).float().to(device)
-            yvt = torch.from_numpy(y_val_unsafe).float().to(device)
+            xvt = torch.from_numpy(np.array(x_val, dtype=np.float32, copy=True)).to(device)
+            yvt = torch.from_numpy(np.array(y_val_unsafe, dtype=np.float32, copy=True)).to(device)
             scores_val = model(xvt).cpu().numpy()
             val_bce = float(
-                bce_risk_loss(torch.from_numpy(scores_val), torch.from_numpy(y_val_unsafe)).item()
+                bce_risk_loss(
+                    torch.from_numpy(np.asarray(scores_val, dtype=np.float32)),
+                    torch.from_numpy(np.array(y_val_unsafe, dtype=np.float32, copy=True)),
+                ).item()
             )
             tau = find_threshold_for_target_coverage(scores_val, cfg.target_coverage)
             val_cov = float(np.mean(scores_val <= tau))

@@ -182,7 +182,9 @@ def main() -> None:
 
         # Global learned/oracle
         with torch.no_grad():
-            gs = global_model(torch.from_numpy(sdf[FEATURE_COLS].to_numpy(np.float32)).to(args.device)).cpu().numpy()
+            gs = global_model(
+                torch.from_numpy(sdf[FEATURE_COLS].to_numpy(np.float32).copy()).to(args.device)
+            ).cpu().numpy()
         gr = sdf["rollout_rmse"].to_numpy(np.float32)
 
         global_learn_curve, global_oracle_curve = [], []

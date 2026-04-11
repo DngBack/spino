@@ -8,6 +8,19 @@ import torch.nn.functional as F
 
 from losses.physics_loss import pde_residual_magnitude_map
 
+# Match `simulate_case` in scripts/generate_synthetic_ep2d_dataset.py (stabilizes rollouts).
+_EP_V_CLIP: tuple[float, float] = (-1.0, 1.5)
+_EP_R_CLIP: tuple[float, float] = (-1.0, 2.0)
+
+
+def _clamp_ep_state(x: torch.Tensor) -> torch.Tensor:
+    """Clamp (V, R) to generator bounds; x is [B, 2, H, W]."""
+    v_lo, v_hi = _EP_V_CLIP
+    r_lo, r_hi = _EP_R_CLIP
+    v = x[:, 0:1].clamp(v_lo, v_hi)
+    r = x[:, 1:2].clamp(r_lo, r_hi)
+    return torch.cat([v, r], dim=1)
+
 
 @dataclass
 class HybridStats:
@@ -37,12 +50,16 @@ class HybridStats:
 
 def masked_rollout_rmse(pred: np.ndarray, gt: np.ndarray, mask: np.ndarray) -> float:
     """pred, gt: [T, 2, H, W]; mask: [H, W] tissue indicator."""
-    w = mask[None, None, ...]
-    diff = (pred - gt) * w
-    den = (w**2).sum() * pred.shape[0] * pred.shape[1]
+    # float64 accumulation: float32 diff**2 can overflow on long rollouts / large domains.
+    w = mask.astype(np.float64, copy=False)[None, None, ...]
+    pd = pred.astype(np.float64, copy=False)
+    gd = gt.astype(np.float64, copy=False)
+    diff = (pd - gd) * w
+    den = float(np.sum(w * w, dtype=np.float64)) * float(pred.shape[0] * pred.shape[1])
     if den <= 0:
         return float("nan")
-    return float(np.sqrt(np.sum(diff**2) / den))
+    mse = float(np.sum(diff * diff, dtype=np.float64) / den)
+    return float(np.sqrt(mse))
 
 
 def stack_rollout(v: np.ndarray, r: np.ndarray) -> np.ndarray:
@@ -135,7 +152,9 @@ def rollout_hybrid_local(
     t_merge = 0.0
 
     for t in range(T - 1):
-        x = cur
+        y_t = torch.stack([v[t], r[t]], dim=0).unsqueeze(0)
+        x = torch.where(torch.isfinite(cur), cur, y_t)
+        x = _clamp_ep_state(x)
         t0 = time.perf_counter()
         if sync_cuda and device.startswith("cuda"):
             torch.cuda.synchronize()
@@ -157,6 +176,8 @@ def rollout_hybrid_local(
         defer_hw = (defer_hw * tissue.unsqueeze(0).unsqueeze(0).float()).clamp(0.0, 1.0)
 
         merged = pred * (1.0 - defer_hw) + y * defer_hw
+        merged = torch.where(torch.isfinite(merged), merged, y)
+        merged = _clamp_ep_state(merged)
         t_merge += time.perf_counter() - t0
 
         stats.n_pixel_repairs += int(defer_hw.sum().item())
